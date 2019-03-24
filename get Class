@@ -1,0 +1,98 @@
+import clr
+
+# Import DocumentManager and TransactionManager
+clr.AddReference("RevitServices")
+import RevitServices
+from RevitServices.Persistence import DocumentManager
+from RevitServices.Transactions import TransactionManager
+
+
+# Import RevitAPI
+clr.AddReference("RevitAPI")
+import Autodesk
+from Autodesk.Revit.DB import *
+
+doc = DocumentManager.Instance.CurrentDBDocument
+collector = FilteredElementCollector(doc)
+els= collector.OfClass(CurveElement).ToElements()
+
+ls = [i.LineStyle.Line for i in els]
+
+
+OUT = ls
+
+##Type
+
+#CeilingType
+
+#DimensionType
+
+#Family         family type
+#FamilySymbol   ?? more than family
+
+#FilledRegionType   les type de hachures
+#FillPatternElement  les motifs disponibles
+#FilterElement
+
+#FloorType
+
+#GraphicsStyle  LOTS OF TYPES!!
+
+#GridType
+#GroupType
+#LinePatternElement
+#LevelType
+#Material
+#ModelTextType
+#PanelType
+#ParameterElement  - Project+Shared +Global
+#ParameterFilterElement
+#Phase
+#PhaseFilter
+#ProjectInfo
+#ProjectLocation  internal and project, not survey
+#Revision
+#RoofType
+#SharedParameterElement
+#SiteLocation
+
+#SpotDimensionType
+#TextElementType
+
+#ViewFamilyType
+#ViewSection
+#WallType
+
+
+##instance
+#AngularDimension
+#ViewSection (coupe et elevation)
+#BasePoint for Survey and BasePoint
+#Ceiling
+#CeilingAndFloor
+#CurtainSystem
+#CurveElement all detail and model line
+#DatumPlane     Levels
+#Dimension all Dimensions
+#ElevationMarker
+#FamilyInstance   system?
+#FilledRegion
+#Floor
+#Grid
+#Group
+#ImportInstance
+#Level
+#ModelText
+#PropertyLine
+#RevisionCloud
+#RevitLinkInstance
+#RevitLinkType
+#SpotDimension
+#TextElement or TextNote
+# View   all views including legend and schedules
+#ViewDrafting
+#ViewPlan  all floor ans ceiling View
+#Viewport  all views on Sheet
+#ViewSchedule
+#ViewSheet
+#Wall

@@ -1,0 +1,19 @@
+Document class
+
+#Delete(ElementId)
+#Delete(ICollection ElementId )
+#EditFamily
+#GetRoomAtPoint(XYZ)
+#GetType
+#GetWarnings
+#LoadFamily(String)
+#	LoadFamily(Document)
+#Print(ViewSet)
+#	Save
+#	SynchronizeWithCentral
+#
+
+#	ActiveView
+#	Create
+#	ProjectInformation
+#	ProjectLocations
