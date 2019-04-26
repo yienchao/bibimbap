@@ -1,0 +1,30 @@
+import clr
+
+# Import DocumentManager and TransactionManager
+clr.AddReference("RevitServices")
+import RevitServices
+from RevitServices.Persistence import DocumentManager
+from RevitServices.Transactions import TransactionManager
+
+
+# Import RevitAPI
+clr.AddReference("RevitAPI")
+import Autodesk
+from Autodesk.Revit.DB import *
+
+doc = DocumentManager.Instance.CurrentDBDocument
+collector = FilteredElementCollector(doc)
+els= collector.OfClass(View).ToElements()
+
+allVT = [i.Name for i in els if i.IsTemplate]
+
+vt = [i.ViewTemplateId for i in els]
+vtname=[]
+for i in vt:
+	try:
+		vtname.append(doc.GetElement(i).Name)
+	except AttributeError:
+		pass
+rest = set(allVT)-set(vt)
+
+OUT = allVT, vtname, rest
